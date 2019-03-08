@@ -1,0 +1,25 @@
+被这个问题折磨了三天，记录一下正确的方法
+
+#安装local::lib模块，进入目录，运行以下命令：
+perl Makefile.PL --bootstrap
+make
+make test
+make install
+
+#接下来在bash下设置环境变量：
+echo '[ $SHLVL -eq 1 ] && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >>~/.bashrc
+
+#存储设置：
+ . ~/.bashrc
+ 
+ #执行cpan:
+ perl -MCPAN -eshell
+ 
+ #修改 prefs_dir：
+> o conf prefs_dir /home/yanmk/.cpan/prefs
+
+#还可修改镜像网址：
+> o conf urllist
+
+#commit之后，再尝试安装模块遂成功。
+ 
